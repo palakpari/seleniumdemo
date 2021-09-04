@@ -8,7 +8,7 @@ import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
 
-public class LoginTest {
+public class HomePageTest {
 
     @Test
     public void landOnGoogleHomePage(){
@@ -21,6 +21,6 @@ public class LoginTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String title = driver.getTitle();
         driver.quit();
-        assertEquals(title, "Yahoo");
+        assertEquals(title, "Google");
     }
 }
