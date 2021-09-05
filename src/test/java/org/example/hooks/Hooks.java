@@ -4,6 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.example.stepdef.BaseClass;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
@@ -19,7 +20,9 @@ public class Hooks extends BaseClass {
     public void beforeScenario() {
         System.setProperty("webdriver.chrome.driver",
                 System.getProperty("user.dir") + "/src/test/resources/chromedriver");
-        baseClass.driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+       // chromeOptions.addArguments("--headless");
+        baseClass.driver = new ChromeDriver(chromeOptions);
         baseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
