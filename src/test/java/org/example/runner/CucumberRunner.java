@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
         dryRun = false,
         features = "src/test/resources/features",
         glue = {"org.example.stepdef","org.example.hooks"},
-        plugin = {"json:target/cucumber.json", "pretty"})
+        plugin = { "pretty", "html:target/cucumber-reports.html" })
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
     @Override
