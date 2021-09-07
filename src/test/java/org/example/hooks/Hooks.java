@@ -5,23 +5,39 @@ import io.cucumber.java.Before;
 import org.example.drivers.DriverType;
 import org.example.drivers.WebDriverFactory;
 import org.example.stepdef.BaseClass;
-import org.openqa.selenium.WebDriver;
 
 public class Hooks extends BaseClass {
 
-    private BaseClass baseClass;
+  private BaseClass baseClass;
 
-    public Hooks(BaseClass baseClass) {
-        this.baseClass = baseClass;
+  DriverType type;
+
+  public Hooks(BaseClass baseClass) {
+    this.baseClass = baseClass;
+  }
+
+  @Before
+  public void beforeScenario() {
+
+    if(null == System.getProperty("browser")){
+       type = DriverType.CHROME;
+    }else {
+       type = DriverType.valueOf(System.getProperty("browser"));
+    }
+    baseClass.driver =
+            WebDriverFactory.getManager(type).getDriver();
+  }
+
+  @After
+  public void afterScenario() {
+
+    if(null == System.getProperty("browser")){
+      type = DriverType.CHROME;
+    }else {
+      type = DriverType.valueOf(System.getProperty("browser"));
     }
 
-    @Before
-    public void beforeScenario() {
-        baseClass.driver = WebDriverFactory.getManager(DriverType.valueOf(System.getProperty("browser"))).getDriver();
-    }
-
-    @After
-    public void afterScenario() {
-        WebDriverFactory.getManager(DriverType.valueOf(System.getProperty("browser"))).quitDriver(baseClass.driver);
-    }
+    WebDriverFactory.getManager(type)
+            .quitDriver(baseClass.driver);
+  }
 }

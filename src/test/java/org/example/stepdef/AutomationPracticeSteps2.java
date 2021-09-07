@@ -8,26 +8,24 @@ import static org.testng.Assert.assertEquals;
 
 public class AutomationPracticeSteps2 extends BaseClass {
 
-    private BaseClass baseClass;
+  private BaseClass baseClass;
 
-    public AutomationPracticeSteps2(BaseClass baseClass){
-        this.baseClass = baseClass;
-    }
+  public AutomationPracticeSteps2(BaseClass baseClass) {
+    this.baseClass = baseClass;
+  }
 
+  @Given("user wants to shop online2")
+  public void user_wants_to_shop_online() {
+    System.out.println("given");
+  }
 
-    @Given("user wants to shop online2")
-    public void user_wants_to_shop_online() {
-        System.out.println("given");
-    }
-    @When("User types http:\\/\\/automationpractice.com\\/index.php in browser2")
-    public void user_types_http_automationpractice_com_index_php_in_browser() {
-        baseClass.driver.get("http://automationpractice.com/index.php");
-    }
-    @Then("User arrives on home page of Automation Practice Site2")
-    public void user_arrives_on_home_page_of_automation_practice_site() {
-        assertEquals(baseClass.driver.getTitle(),"My Store");
-    }
+  @When("User types http:\\/\\/automationpractice.com\\/index.php in browser2")
+  public void user_types_http_automationpractice_com_index_php_in_browser() {
+    baseClass.driver.get("http://automationpractice.com/index.php");
+  }
 
-
-
+  @Then("User arrives on home page of Automation Practice Site2")
+  public void user_arrives_on_home_page_of_automation_practice_site() {
+    assertEquals(baseClass.driver.getTitle(), "My Store");
+  }
 }

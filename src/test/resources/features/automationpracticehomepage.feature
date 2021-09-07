@@ -1,4 +1,5 @@
 Feature: Automation Practice Site Home Page
+
   Scenario: User visits home page of Automation Practice Site
     Given user wants to shop online
     When User types http://automationpractice.com/index.php in browser

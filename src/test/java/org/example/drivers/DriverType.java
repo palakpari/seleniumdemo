@@ -1,8 +1,8 @@
 package org.example.drivers;
 
 public enum DriverType {
-    CHROME,
-    FIREFOX,
-    EDGE,
-    SAFARI;
+  CHROME,
+  FIREFOX,
+  EDGE,
+  SAFARI;
 }
